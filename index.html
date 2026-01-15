@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,144 +16,272 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
-        body { background-color: #000; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        :root {
+            --accent: #10b981; /* Emerald Accent */
+            --bg: #000;
+            --card-bg: rgba(255, 255, 255, 0.02);
+        }
+
+        body { 
+            background-color: var(--bg); 
+            color: #fff; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            overflow-x: hidden; 
+        }
 
         .shine-text {
-            background: linear-gradient(to right, #fff 20%, #444 40%, #444 60%, #fff 80%);
+            background: linear-gradient(to right, #fff 20%, #666 40%, #666 60%, #fff 80%);
             background-size: 200% auto;
             color: #fff;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shine 4s linear infinite;
+            animation: shine 5s linear infinite;
         }
         @keyframes shine { to { background-position: 200% center; } }
 
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            margin: 4rem 0;
+        }
+
         .premium-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--card-bg);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 40px;
-            padding: 50px;
-            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 60px;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .premium-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-5px);
         }
 
-        .badge-pill {
-            background: #fff; color: #000;
-            padding: 6px 16px; border-radius: 100px;
-            font-size: 11px; font-weight: 800;
-            text-transform: uppercase; display: inline-block; margin-bottom: 24px;
-        }
-
-        .dock-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10000; }
-        .dock {
-            background: rgba(15, 15, 15, 0.75); backdrop-filter: blur(20px);
-            padding: 12px 24px; border-radius: 100px;
+        .accent-text { color: var(--accent); }
+        
+        .nav-dock {
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255,255,255,0.1);
-            display: flex; align-items: center; gap: 20px;
+            padding: 10px 24px;
+            border-radius: 100px;
+            display: flex; gap: 24px;
+            align-items: center;
         }
-        .dock a img { width: 22px; opacity: 0.7; transition: 0.3s; }
-        .dock a:hover img { opacity: 1; transform: translateY(-5px); }
 
-        .reveal { opacity: 0; transform: translateY(50px); }
+        .reveal { opacity: 0; transform: translateY(30px); }
     </style>
 </head>
 <body>
 
-    <div class="dock-container">
-        <nav class="dock">
-            <a href="#home"><img src="https://img.icons8.com/material-rounded/48/ffffff/home.png"></a>
-            <a href="#about"><img src="https://img.icons8.com/material-rounded/48/ffffff/user.png"></a>
-            <a href="#achievements"><img src="https://img.icons8.com/material-rounded/48/ffffff/trophy.png"></a>
+    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[10000]">
+        <nav class="nav-dock">
+            <a href="#home" class="hover:-translate-y-1 transition-transform"><img src="https://img.icons8.com/material-rounded/24/ffffff/home.png"></a>
+            <a href="#about" class="hover:-translate-y-1 transition-transform"><img src="https://img.icons8.com/material-rounded/24/ffffff/user.png"></a>
+            <a href="#achievements" class="hover:-translate-y-1 transition-transform"><img src="https://img.icons8.com/material-rounded/24/ffffff/trophy.png"></a>
             <div class="w-[1px] h-4 bg-zinc-800"></div>
-            <a href="https://github.com/hastagnitin" target="_blank"><img src="https://img.icons8.com/ios-filled/50/ffffff/github.png"></a>
-            <a href="mailto:nitin978032@gmail.com"><img src="https://img.icons8.com/material-rounded/48/ffffff/mail.png"></a>
+            <a href="https://github.com/hastagnitin" target="_blank" class="hover:-translate-y-1 transition-transform"><img src="https://img.icons8.com/ios-filled/24/ffffff/github.png"></a>
         </nav>
     </div>
 
-    <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6">
-        <div class="mb-8 hover:scale-110 transition-transform duration-500">
-            <img src="https://avatars.githubusercontent.com/u/1869845?v=4" class="w-24 h-24 rounded-3xl border border-zinc-800">
+    <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6 sticky top-0">
+        <div class="hero-content">
+            <span class="accent-text font-bold tracking-[0.4em] text-xs uppercase mb-4 block">Ludhiana, Punjab</span>
+            <h1 class="shine-text hero-title uppercase text-[clamp(3rem,15vw,12rem)] font-extrabold leading-[0.85] tracking-tighter">
+                Nitin Gupta
+            </h1>
+            <p class="text-zinc-500 mt-8 text-lg md:text-xl font-medium tracking-wide">
+                Frontend Developer <span class="mx-2 text-zinc-800">•</span> DSA Enthusiast <span class="mx-2 text-zinc-800">•</span> UI/UX Explorer
+            </p>
         </div>
-        <h1 class="shine-text uppercase text-[clamp(3.5rem,12vw,10rem)] font-extrabold leading-[0.9]">Nitin Gupta</h1>
-        <p class="text-zinc-500 mt-6 text-lg md:text-xl">B.Tech Student • Frontend Dev • Ludhiana</p>
     </section>
 
-    <section id="about" class="py-32 px-6 max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start reveal">
-            <h2 class="text-7xl font-black uppercase leading-[0.8]">THE <br> STORY.</h2>
-            <div class="premium-card">
-                <div class="badge-pill">Overview</div>
-                <h3 class="text-3xl font-bold mb-6">"Code with purpose, build with passion."</h3>
-                <p class="text-zinc-400 text-lg leading-relaxed mb-6"></p>
-                <div class="flex gap-4 opacity-40">
-                    <img src="https://img.icons8.com/color/48/html-5--v1.png" class="w-6">
-                    <img src="https://img.icons8.com/color/48/css3.png" class="w-6">
-                    <img src="https://img.icons8.com/color/48/javascript--v1.png" class="w-6">
-                    <img src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg" class="w-6">
+    <div class="h-screen bg-transparent pointer-events-none"></div>
+
+    <div class="relative z-10 bg-black">
+        
+        <div class="section-divider"></div>
+
+        <section id="about" class="py-24 px-6 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start reveal">
+                <div class="md:col-span-5">
+                    <span class="text-zinc-600 font-bold text-sm mb-4 block">01 // THE STORY</span>
+                    <h2 class="text-7xl font-black uppercase leading-[0.8] mb-6">Building <br> With <span class="accent-text">Logic.</span></h2>
+                </div>
+                <div class="md:col-span-7 premium-card">
+                    <h3 class="text-2xl font-bold mb-8 leading-snug">"I build modern frontend experiences with a focus on motion and performance."</h3>
+                    <p class="text-zinc-400 text-lg leading-relaxed mb-6">
+                        Alongside UI development, I actively strengthen my problem-solving skills through <span class="text-white">Data Structures and Algorithms</span>. This helps me write cleaner, more efficient, and scalable code.
+                    </p>
+                    <p class="text-zinc-500 text-lg leading-relaxed">
+                        My work revolves around <span class="text-zinc-300">JavaScript, GSAP, and Modern CSS</span>, where I combine clean layouts with smooth motion to create engaging digital products.
+                    </p>
+                    <div class="mt-10 flex gap-6 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                        <img src="https://img.icons8.com/color/48/javascript.png" class="w-8">
+                        <img src="https://img.icons8.com/color/48/c-plus-plus.png" class="w-8">
+                        <img src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg" class="w-8">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="achievements" class="py-32 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start reveal">
-            <div class="order-1 md:order-2">
-                <h2 class="text-7xl font-black uppercase leading-[0.8] text-blue-500/80">CODE <br> ELITE. <br> <span class="text-white">#08</span></h2>
-                <p class="text-zinc-600 mt-10 font-bold uppercase tracking-[0.3em]">Recognition 2025</p>
-            </div>
+        <div class="section-divider"></div>
+
+        <section id="achievements" class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start reveal">
+        <div class="md:col-span-5 md:order-2">
+            <span class="text-zinc-600 font-bold text-sm mb-4 block tracking-[0.2em]">02 // ACCOLADES</span>
+            <h2 class="text-7xl font-black uppercase leading-[0.8] mb-6">CODE <br> ELITE <span class="accent-text">#08</span></h2>
+        </div>
+        
+        <div class="md:col-span-7 md:order-1 premium-card relative overflow-hidden group">
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
             
-            <div class="premium-card order-2 md:order-1" style="border-color: rgba(59, 130, 246, 0.2);">
-                <div class="badge-pill" style="background: #3b82f6; color: #fff;">Top 8 Finalist</div>
-                <h3 class="text-3xl font-bold mb-6">Flood Management System</h3>
-                <p class="text-zinc-400 text-lg leading-relaxed mb-6">
-                    Successfully developed a real-time monitoring system during a 24-hour hackathon at DBU. This project showcased my ability to think on my feet and build scalable logic under tight deadlines.
+            <div class="relative z-10">
+                <div class="flex justify-between items-start mb-10">
+                    <span class="badge-pill bg-emerald-500 text-white border-none shadow-[0_0_15px_rgba(16,185,129,0.3)]">Top 8 Finalist</span>
+                    <div class="text-right">
+                        <p class="text-[10px] text-zinc-600 uppercase font-bold tracking-widest">Event Status</p>
+                        <p class="text-emerald-500 text-xs font-bold uppercase">✓ Verified Entry</p>
+                    </div>
+                </div>
+
+                <h3 class="text-4xl font-extrabold mb-6 tracking-tight">Flood Management System</h3>
+                <p class="text-zinc-400 text-lg leading-relaxed mb-8 border-l-2 border-zinc-800 pl-6 italic">
+                    "Successfully engineered a real-time data monitoring solution during a grueling 24-hour hackathon, securing a spot among the elite finalists."
                 </p>
-                <div class="pt-6 border-t border-white/10 text-xs text-zinc-500 font-semibold uppercase tracking-widest">
-                    Techno Club • Ludhiana
+                
+                <div class="grid grid-cols-2 gap-4 pt-8 border-t border-zinc-900">
+                    <div>
+                        <p class="text-[10px] text-zinc-600 uppercase font-bold mb-1">Organization</p>
+                        <p class="text-white text-sm font-bold">DBU Techno Club</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-zinc-600 uppercase font-bold mb-1">Ranked</p>
+                        <p class="text-white text-sm font-bold">Top 8 / 100+ Teams</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="py-32 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start reveal">
-            <h2 class="text-7xl font-black uppercase leading-[0.8] text-orange-500/80">CORE <br> LOGIC.</h2>
-            <div class="premium-card" style="border-color: rgba(249, 115, 22, 0.2);">
-                <div class="badge-pill" style="background: #f97316; color: #fff;">Summer Training</div>
-                <h3 class="text-3xl font-bold mb-6">DSA in C++</h3>
-                <p class="text-zinc-400 text-lg leading-relaxed mb-6">
-                    A deep dive into data structures and algorithmic thinking. This training helped me build a strong foundation in logical problem-solving and code optimization.
-                </p>
-                <div class="flex gap-4">
-                    <span class="px-4 py-2 bg-zinc-900 rounded-xl text-xs font-bold text-orange-200 uppercase">C++ Foundations</span>
-                    <span class="px-4 py-2 bg-zinc-900 rounded-xl text-xs font-bold text-orange-200 uppercase">Problem Solving</span>
+<section class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start reveal">
+        <div class="md:col-span-5">
+            <span class="text-zinc-600 font-bold text-sm mb-4 block tracking-[0.2em]">03 // CERTIFICATION</span>
+            <h2 class="text-7xl font-black uppercase leading-[0.8] mb-6">CORE <br> <span class="accent-text">SKILLS.</span></h2>
+        </div>
+        
+        <div class="md:col-span-7 premium-card bg-zinc-950/50 border-dashed border-zinc-800">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center">
+                    <img src="https://img.icons8.com/material-rounded/24/ffffff/certificate.png" class="opacity-50">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold uppercase tracking-tighter">Summer Training: DSA</h3>
+                    <p class="text-emerald-500 text-[10px] font-bold tracking-[0.2em] uppercase">Academic Recognition</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="h-screen flex flex-col items-center justify-center text-center px-6">
-        <h2 class="shine-text uppercase text-[clamp(3.5rem,8vw,8rem)] font-black leading-none mb-16">LET'S BUILD <br> SOMETHING.</h2>
-        <a href="https://www.linkedin.com/in/nitin-gupta-197553331" target="_blank" class="bg-white text-black px-12 py-5 rounded-full font-bold text-lg hover:scale-105 transition-all">Get in touch</a>
-        <p class="mt-28 text-zinc-800 tracking-[0.6em] text-[10px]">NITIN GUPTA • 2026</p>
-    </footer>
+            <p class="text-zinc-400 text-lg leading-relaxed mb-10">
+                Completed rigorous training in <span class="text-white">C++ Foundations</span> and <span class="text-white">Algorithmic Design</span>. Focused on solving complex computational problems and building a high-performance logic base.
+            </p>
+
+            <div class="space-y-4 mb-10">
+                <div class="flex justify-between items-center py-2 border-b border-zinc-900/50">
+                    <span class="text-zinc-500 text-sm">Data Structures Mastery</span>
+                    <span class="text-white text-xs font-bold">OPTIMIZED</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-zinc-900/50">
+                    <span class="text-zinc-500 text-sm">Memory Management</span>
+                    <span class="text-white text-xs font-bold">C++ </span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                    <span class="text-zinc-500 text-sm">Time Complexity Analysis</span>
+                    <span class="text-white text-xs font-bold">ADVANCED</span>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900/30 p-4 rounded-2xl flex items-center justify-between">
+                <span class="text-[10px] text-zinc-600 font-bold uppercase tracking-widest">Training Verified by</span>
+                <span class="text-zinc-400 text-[10px] font-bold uppercase">DBU Engineering Dept.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <div class="section-divider"></div>
+
+        <section class="py-24 px-6 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start reveal">
+                <div class="md:col-span-5">
+                    <span class="text-zinc-600 font-bold text-sm mb-4 block">03 // FOUNDATION</span>
+                    <h2 class="text-7xl font-black uppercase leading-[0.8] mb-6">Core <br> <span class="accent-text">DSA.</span></h2>
+                </div>
+                <div class="md:col-span-7 premium-card">
+                    <h3 class="text-3xl font-bold mb-6">Data Structures & Algorithms</h3>
+                    <p class="text-zinc-400 text-lg leading-relaxed mb-8">
+                        Mastering the fundamentals of computational logic using C++. This training focused on optimizing search patterns and data organization to ensure high-performance execution.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-zinc-900 px-4 py-2 rounded-full text-xs font-bold text-zinc-400 border border-zinc-800">C++ Foundations</span>
+                        <span class="bg-zinc-900 px-4 py-2 rounded-full text-xs font-bold text-zinc-400 border border-zinc-800">Algorithmic Thinking</span>
+                        <span class="bg-zinc-900 px-4 py-2 rounded-full text-xs font-bold text-zinc-400 border border-zinc-800">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
+            <h2 class="shine-text uppercase text-[clamp(3rem,10vw,8rem)] font-black leading-none mb-12">
+                Let's Build <br> Together.
+            </h2>
+            <a href="mailto:nitin978032@gmail.com" class="bg-white text-black px-12 py-5 rounded-full font-bold text-lg hover:invert transition-all duration-500">
+                Get in touch
+            </a>
+            <div class="absolute bottom-12 text-zinc-800 tracking-[0.8em] text-[10px] font-bold uppercase">
+                Nitin Gupta • 2026
+            </div>
+        </footer>
+    </div>
 
     <script>
+        // Smooth Scroll initialization
         const lenis = new Lenis();
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
         gsap.registerPlugin(ScrollTrigger);
+
+        // Cinematic Hero Parallax
+        gsap.to(".hero-content", {
+            scrollTrigger: {
+                trigger: "#home",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            },
+            scale: 0.8,
+            opacity: 0,
+            y: -100
+        });
+
+        // Reveal animations for sections
         document.querySelectorAll('.reveal').forEach((el) => {
             gsap.to(el, {
-                opacity: 1, y: 0, duration: 1.5, ease: "power4.out",
-                scrollTrigger: { trigger: el, start: "top 85%" }
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "expo.out",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                }
             });
         });
     </script>
