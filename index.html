@@ -1,289 +1,468 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nitin Gupta — Frontend Dev</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Payal ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap');
 
         :root {
-            --accent: #10b981; /* Emerald Accent */
-            --bg: #000;
-            --card-bg: rgba(255, 255, 255, 0.02);
+            --primary: #ff4d6d;
+            --sun-glow: #ffcc33;
+            --bg: #fff5f7;
         }
 
-        body { 
-            background-color: var(--bg); 
-            color: #fff; 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            overflow-x: hidden; 
+        body {
+            margin: 0; padding: 0; 
+            height: 100vh;
+            height: -webkit-fill-available; /* Mobile height fix */
+            display: flex; justify-content: center; align-items: center;
+            background: var(--bg); font-family: 'Montserrat', sans-serif;
+            overflow: hidden; touch-action: none;
+            transition: background 0.8s ease;
         }
 
-        .shine-text {
-            background: linear-gradient(to right, #fff 20%, #666 40%, #666 60%, #fff 80%);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 5s linear infinite;
-        }
-        @keyframes shine { to { background-position: 200% center; } }
-
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
-            margin: 4rem 0;
+        html {
+            height: -webkit-fill-available;
         }
 
-        .premium-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 40px;
-            padding: 60px;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .premium-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .accent-text { color: var(--accent); }
-        
-        .nav-dock {
-            background: rgba(15, 15, 15, 0.7);
+        #container {
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 10px 24px;
-            border-radius: 100px;
-            display: flex; gap: 24px;
-            align-items: center;
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px 20px; border-radius: 40px;
+            box-shadow: 0 25px 45px rgba(255, 77, 109, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            text-align: center; width: 90%; max-width: 400px;
+            z-index: 100; transition: all 0.5s ease;
+            position: relative;
+            box-sizing: border-box;
         }
 
-        .reveal { opacity: 0; transform: translateY(30px); }
+        #passwordModal {
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: none; justify-content: center; align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: white; padding: 30px 20px;
+            border-radius: 35px; text-align: center;
+            width: 85%; max-width: 320px;
+            box-shadow: 0 10px 40px rgba(255, 77, 109, 0.4);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        input {
+            width: 100%; padding: 12px;
+            margin: 10px 0; border: 2px solid var(--primary);
+            border-radius: 15px; font-size: 1rem;
+            text-align: center; outline: none;
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .hint-text { font-size: 0.75rem; color: #888; margin-top: -5px; margin-bottom: 10px; }
+
+        .emoji-box {
+            font-size: clamp(60px, 15vw, 100px); margin-bottom: 20px;
+            display: block; animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        h1 { color: #333; font-size: clamp(1.4rem, 5vw, 1.8rem); margin-bottom: 30px; line-height: 1.4; }
+
+        .buttons {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 15px; min-height: 120px;
+            width: 100%;
+        }
+
+        button {
+            padding: 16px 20px; font-size: 1.1rem; border: none;
+            border-radius: 20px; cursor: pointer; font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            touch-action: manipulation;
+        }
+
+        #yesBtn, #confirmBtn { background: var(--primary); color: white; }
+        #noBtn { background: #eee; color: #666; width: auto; font-size: 0.9rem; min-width: 120px; }
+
+        #success {
+            position: fixed; inset: 0; 
+            background: radial-gradient(circle, #fff9e6 0%, #ffcc33 100%);
+            display: none; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 1000;
+            text-align: center; cursor: crosshair;
+            animation: skyOpen 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        @keyframes skyOpen {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .success-text { 
+            font-family: 'Dancing Script', cursive; 
+            color: #d4a017; margin: 5px 0; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1); 
+            z-index: 50; position: relative;
+            width: 100%;
+        }
+        
+        .sun-message {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            color: #ff4d6d;
+            font-weight: 600;
+            z-index: 100;
+            pointer-events: auto;
+            max-width: 150px;
+            border: 1px solid #ffcc33;
+            word-wrap: break-word;
+        }
+
+        .sun {
+            width: clamp(70px, 15vw, 100px); 
+            height: clamp(70px, 15vw, 100px);
+            background: #ffcc33; border-radius: 50%;
+            box-shadow: 0 0 60px #ffcc33;
+            margin-bottom: 10px; animation: sunPulse 2s infinite alternate;
+            z-index: 50; position: relative;
+        }
+
+        @keyframes sunPulse {
+            from { transform: scale(1); box-shadow: 0 0 40px #ffcc33; }
+            to { transform: scale(1.1); box-shadow: 0 0 70px #ffdb4d; }
+        }
+
+        #timerContainer {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 10px 15px; border-radius: 25px;
+            margin-top: 10px; backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            z-index: 50; position: relative;
+            width: auto; max-width: 90%;
+        }
+
+        #timerDisplay { font-size: clamp(1rem, 4vw, 1.2rem); color: #b8860b; font-weight: 700; margin-top: 5px; }
+
+        .trail {
+            position: absolute; pointer-events: none; z-index: 9999;
+            font-size: 20px; animation: fadeAndMove 1s ease-out forwards;
+        }
+
+        @keyframes fadeAndMove {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -150%) scale(0.5); opacity: 0; }
+        }
+
+        .beam {
+            position: absolute; background: linear-gradient(to top, transparent, #fff9e6);
+            width: 4px; height: 100px; transform-origin: bottom center;
+            border-radius: 50%; pointer-events: none; z-index: 5;
+            animation: beamOut 0.8s ease-out forwards;
+        }
+
+        @keyframes beamOut {
+            0% { transform: rotate(var(--r)) translateY(0); opacity: 1; height: 0; }
+            100% { transform: rotate(var(--r)) translateY(-200px); opacity: 0; height: 150px; }
+        }
+
+        .particle { position: absolute; pointer-events: none; z-index: 40; }
+
+        .floating-love {
+            position: absolute;
+            color: rgba(212, 160, 23, 0.5);
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            pointer-events: none;
+            z-index: 5;
+            white-space: nowrap;
+            animation: fadeInOut 3s ease-in-out forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.5); }
+            20% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: translateY(-40px); }
+        }
+
+        @keyframes crackerBurst {
+            0% { transform: translate(0,0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+        }
+
+        @keyframes heartFloat {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+        }
+
+        .shake { animation: shake 0.4s ease-in-out; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
+        .hidden { display: none !important; }
+
+        /* Small mobile optimization */
+        @media (max-height: 600px) {
+            #container { padding: 20px; }
+            .emoji-box { margin-bottom: 10px; }
+            h1 { margin-bottom: 15px; }
+            .buttons { min-height: 100px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[10000]">
-        <nav class="nav-dock">
-            <a href="#home" class="hover:-translate-y-1 transition-transform"><img src="https://img.icons8.com/material-rounded/24/ffffff/home.png"></a>
-            <a href="#about" class="hover:-translate-y-1 transition-transform"><img src="https://img.icons8.com/material-rounded/24/ffffff/user.png"></a>
-            <a href="#achievements" class="hover:-translate-y-1 transition-transform"><img src="https://img.icons8.com/material-rounded/24/ffffff/trophy.png"></a>
-            <div class="w-[1px] h-4 bg-zinc-800"></div>
-            <a href="https://github.com/hastagnitin" target="_blank" class="hover:-translate-y-1 transition-transform"><img src="https://img.icons8.com/ios-filled/24/ffffff/github.png"></a>
-        </nav>
-    </div>
-
-    <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6 sticky top-0">
-        <div class="hero-content">
-            <span class="accent-text font-bold tracking-[0.4em] text-xs uppercase mb-4 block">Ludhiana, Punjab</span>
-            <h1 class="shine-text hero-title uppercase text-[clamp(3rem,15vw,12rem)] font-extrabold leading-[0.85] tracking-tighter">
-                Nitin Gupta
-            </h1>
-            <p class="text-zinc-500 mt-8 text-lg md:text-xl font-medium tracking-wide">
-                Frontend Developer <span class="mx-2 text-zinc-800">•</span> DSA Enthusiast <span class="mx-2 text-zinc-800">•</span> UI/UX Explorer
-            </p>
-        </div>
-    </section>
-
-    <div class="h-screen bg-transparent pointer-events-none"></div>
-
-    <div class="relative z-10 bg-black">
-        
-        <div class="section-divider"></div>
-
-        <section id="about" class="py-24 px-6 max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start reveal">
-                <div class="md:col-span-5">
-                    <span class="text-zinc-600 font-bold text-sm mb-4 block">01 // THE STORY</span>
-                    <h2 class="text-7xl font-black uppercase leading-[0.8] mb-6">Building <br> With <span class="accent-text">Logic.</span></h2>
-                </div>
-                <div class="md:col-span-7 premium-card">
-                    <h3 class="text-2xl font-bold mb-8 leading-snug">"I build modern frontend experiences with a focus on motion and performance."</h3>
-                    <p class="text-zinc-400 text-lg leading-relaxed mb-6">
-                        Alongside UI development, I actively strengthen my problem-solving skills through <span class="text-white">Data Structures and Algorithms</span>. This helps me write cleaner, more efficient, and scalable code.
-                    </p>
-                    <p class="text-zinc-500 text-lg leading-relaxed">
-                        My work revolves around <span class="text-zinc-300">JavaScript, GSAP, and Modern CSS</span>, where I combine clean layouts with smooth motion to create engaging digital products.
-                    </p>
-                    <div class="mt-10 flex gap-6 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
-                        <img src="https://img.icons8.com/color/48/javascript.png" class="w-8">
-                        <img src="https://img.icons8.com/color/48/c-plus-plus.png" class="w-8">
-                        <img src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg" class="w-8">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <section id="achievements" class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start reveal">
-        <div class="md:col-span-5 md:order-2">
-            <span class="text-zinc-600 font-bold text-sm mb-4 block tracking-[0.2em]">02 // ACCOLADES</span>
-            <h2 class="text-7xl font-black uppercase leading-[0.8] mb-6">CODE <br> ELITE <span class="accent-text">#08</span></h2>
-        </div>
-        
-        <div class="md:col-span-7 md:order-1 premium-card relative overflow-hidden group">
-            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
-            
-            <div class="relative z-10">
-                <div class="flex justify-between items-start mb-10">
-                    <span class="badge-pill bg-emerald-500 text-white border-none shadow-[0_0_15px_rgba(16,185,129,0.3)]">Top 8 Finalist</span>
-                    <div class="text-right">
-                        <p class="text-[10px] text-zinc-600 uppercase font-bold tracking-widest">Event Status</p>
-                        <p class="text-emerald-500 text-xs font-bold uppercase">✓ Verified Entry</p>
-                    </div>
-                </div>
-
-                <h3 class="text-4xl font-extrabold mb-6 tracking-tight">Flood Management System</h3>
-                <p class="text-zinc-400 text-lg leading-relaxed mb-8 border-l-2 border-zinc-800 pl-6 italic">
-                    "Successfully engineered a real-time data monitoring solution during a grueling 24-hour hackathon, securing a spot among the elite finalists."
-                </p>
-                
-                <div class="grid grid-cols-2 gap-4 pt-8 border-t border-zinc-900">
-                    <div>
-                        <p class="text-[10px] text-zinc-600 uppercase font-bold mb-1">Organization</p>
-                        <p class="text-white text-sm font-bold">DBU Techno Club</p>
-                    </div>
-                    <div>
-                        <p class="text-[10px] text-zinc-600 uppercase font-bold mb-1">Ranked</p>
-                        <p class="text-white text-sm font-bold">Top 8 / 100+ Teams</p>
-                    </div>
-                </div>
-            </div>
+    <div id="container">
+        <span class="emoji-box" id="mainEmoji">💍</span>
+        <h1 id="question">Will you be my Valentine, <span style="color: var(--primary);">Payal</span>?</h1>
+        <div class="buttons">
+            <button id="yesBtn">Yes 💖</button>
+            <button id="noBtn">No ❌</button>
         </div>
     </div>
-</section>
 
-<section class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start reveal">
-        <div class="md:col-span-5">
-            <span class="text-zinc-600 font-bold text-sm mb-4 block tracking-[0.2em]">03 // CERTIFICATION</span>
-            <h2 class="text-7xl font-black uppercase leading-[0.8] mb-6">CORE <br> <span class="accent-text">SKILLS.</span></h2>
-        </div>
-        
-        <div class="md:col-span-7 premium-card bg-zinc-950/50 border-dashed border-zinc-800">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center">
-                    <img src="https://img.icons8.com/material-rounded/24/ffffff/certificate.png" class="opacity-50">
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold uppercase tracking-tighter">Summer Training: DSA</h3>
-                    <p class="text-emerald-500 text-[10px] font-bold tracking-[0.2em] uppercase">Academic Recognition</p>
-                </div>
-            </div>
-
-            <p class="text-zinc-400 text-lg leading-relaxed mb-10">
-                Completed rigorous training in <span class="text-white">C++ Foundations</span> and <span class="text-white">Algorithmic Design</span>. Focused on solving complex computational problems and building a high-performance logic base.
-            </p>
-
-            <div class="space-y-4 mb-10">
-                <div class="flex justify-between items-center py-2 border-b border-zinc-900/50">
-                    <span class="text-zinc-500 text-sm">Data Structures Mastery</span>
-                    <span class="text-white text-xs font-bold">OPTIMIZED</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-zinc-900/50">
-                    <span class="text-zinc-500 text-sm">Memory Management</span>
-                    <span class="text-white text-xs font-bold">C++ </span>
-                </div>
-                <div class="flex justify-between items-center py-2">
-                    <span class="text-zinc-500 text-sm">Time Complexity Analysis</span>
-                    <span class="text-white text-xs font-bold">ADVANCED</span>
-                </div>
-            </div>
-
-            <div class="bg-zinc-900/30 p-4 rounded-2xl flex items-center justify-between">
-                <span class="text-[10px] text-zinc-600 font-bold uppercase tracking-widest">Training Verified by</span>
-                <span class="text-zinc-400 text-[10px] font-bold uppercase">DBU Engineering Dept.</span>
-            </div>
+    <div id="passwordModal">
+        <div class="modal-content">
+            <span style="font-size: 50px;">🔐</span>
+            <h3>Identity Check!</h3>
+            <p style="font-size: 0.85rem; color: #666;">Select our special date & enter nickname!</p>
+            <input type="date" id="dateInput">
+            <input type="text" id="nickInput" placeholder="Mera nickname kya hai?">
+            <p class="hint-text">(all letters in smallcase)</p>
+            <button id="confirmBtn">Unlock & Say YES! ✨</button>
+            <p id="errorMsg" style="color: red; font-size: 0.8rem; margin-top: 10px; display: none;">Oops! Check the details... 🥺</p>
         </div>
     </div>
-</section>
 
-        <div class="section-divider"></div>
+    <div id="success">
+        <div class="sun"></div>
+        <h1 class="success-text" style="font-size: clamp(1.8rem, 8vw, 2.5rem);">Thank You Payal! ☀️</h1>
+        
+        <div id="bubbleContainer"></div>
 
-        <section class="py-24 px-6 max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start reveal">
-                <div class="md:col-span-5">
-                    <span class="text-zinc-600 font-bold text-sm mb-4 block">03 // FOUNDATION</span>
-                    <h2 class="text-7xl font-black uppercase leading-[0.8] mb-6">Core <br> <span class="accent-text">DSA.</span></h2>
-                </div>
-                <div class="md:col-span-7 premium-card">
-                    <h3 class="text-3xl font-bold mb-6">Data Structures & Algorithms</h3>
-                    <p class="text-zinc-400 text-lg leading-relaxed mb-8">
-                        Mastering the fundamentals of computational logic using C++. This training focused on optimizing search patterns and data organization to ensure high-performance execution.
-                    </p>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-zinc-900 px-4 py-2 rounded-full text-xs font-bold text-zinc-400 border border-zinc-800">C++ Foundations</span>
-                        <span class="bg-zinc-900 px-4 py-2 rounded-full text-xs font-bold text-zinc-400 border border-zinc-800">Algorithmic Thinking</span>
-                        <span class="bg-zinc-900 px-4 py-2 rounded-full text-xs font-bold text-zinc-400 border border-zinc-800">Problem Solving</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <h2 class="success-text" style="font-size: clamp(0.9rem, 4vw, 1.2rem); color: #b8860b; margin-top: 15px;">Together Since 04-09-2024</h2>
+        
+        <div id="timerContainer">
+            <div style="font-size: 0.7rem; color: #8a6d1a; font-weight: 600;">TIME WITH MY SUN:</div>
+            <div id="timerDisplay">Calculating...</div>
+        </div>
 
-        <footer class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
-            <h2 class="shine-text uppercase text-[clamp(3rem,10vw,8rem)] font-black leading-none mb-12">
-                Let's Build <br> Together.
-            </h2>
-            <a href="mailto:nitin978032@gmail.com" class="bg-white text-black px-12 py-5 rounded-full font-bold text-lg hover:invert transition-all duration-500">
-                Get in touch
-            </a>
-            <div class="absolute bottom-12 text-zinc-800 tracking-[0.8em] text-[10px] font-bold uppercase">
-                Nitin Gupta • 2026
-            </div>
-        </footer>
+        <div style="font-size: 30px; margin-top: 15px; z-index: 50; position: relative;">🌻✨💛🌞</div>
+        <p style="margin-top: 10px; font-weight: 600; color: #8a6d1a; z-index: 50; position: relative;">Forever Yours, Nonnu! ❤️</p>
     </div>
 
     <script>
-        // Smooth Scroll initialization
-        const lenis = new Lenis();
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const passwordModal = document.getElementById('passwordModal');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const dateInput = document.getElementById('dateInput');
+        const nickInput = document.getElementById('nickInput');
+        const errorMsg = document.getElementById('errorMsg');
+        const successDiv = document.getElementById('success');
+        const timerDisplay = document.getElementById('timerDisplay');
 
-        gsap.registerPlugin(ScrollTrigger);
+        const correctDate = "2024-09-04"; 
+        const correctNick = "nonnu";
+        const togetherSince = new Date("2024-09-04T00:00:00"); 
 
-        // Cinematic Hero Parallax
-        gsap.to(".hero-content", {
-            scrollTrigger: {
-                trigger: "#home",
-                start: "top top",
-                end: "bottom top",
-                scrub: true
-            },
-            scale: 0.8,
-            opacity: 0,
-            y: -100
+        let noCount = 0;
+        const noData = ["Are you sure? 🥺", "Soch lo... ☹️", "Nonnu bura maan jayega!", "Dil tod dogi? 💔", "Last chance! 😉"];
+
+        noBtn.onclick = () => {
+            if (noCount < noData.length) {
+                noBtn.innerText = noData[noCount];
+                let scale = 1 + (noCount * 0.4);
+                yesBtn.style.transform = `scale(${scale})`;
+                // On mobile, push the no button down if needed
+                noCount++;
+            } else { noBtn.classList.add('hidden'); }
+        };
+
+        yesBtn.onclick = () => { passwordModal.style.display = 'flex'; };
+
+        confirmBtn.onclick = () => {
+            if (dateInput.value === correctDate && nickInput.value.toLowerCase().trim() === correctNick) {
+                passwordModal.style.display = 'none';
+                celebrate();
+            } else {
+                errorMsg.style.display = 'block';
+                document.querySelector('.modal-content').classList.add('shake');
+                setTimeout(() => document.querySelector('.modal-content').classList.remove('shake'), 400);
+            }
+        };
+
+        function updateTimer() {
+            const diff = new Date() - togetherSince;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+            timerDisplay.innerHTML = `${days}d : ${hours}h : ${mins}m : ${secs}s`;
+        }
+
+        let isCelebrating = false;
+        const trailEmojis = ["💛", "❤️", "✨", "🌻", "💖"];
+
+        const createTrail = (x, y) => {
+            if (!isCelebrating) return;
+            const t = document.createElement('div');
+            t.className = 'trail';
+            t.innerText = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
+            t.style.left = x + "px";
+            t.style.top = y + "px";
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 1000);
+        };
+
+        window.addEventListener('mousemove', (e) => createTrail(e.clientX, e.clientY));
+        window.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            createTrail(touch.clientX, touch.clientY);
         });
 
-        // Reveal animations for sections
-        document.querySelectorAll('.reveal').forEach((el) => {
-            gsap.to(el, {
-                opacity: 1,
-                y: 0,
-                duration: 1.2,
-                ease: "expo.out",
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
+        function spawnLoveText() {
+            if(!isCelebrating) return;
+            const loveMsgs = ["I love you Payalji ❤️", "Hame ji pyaar h aapse ✨", "I Love You My Sun ☀️", "Meri Payu, I Love You! 🌻", "Love You Ji 💖"];
+            const txt = document.createElement('div');
+            txt.className = 'floating-love';
+            txt.innerText = loveMsgs[Math.floor(Math.random() * loveMsgs.length)];
+            txt.style.left = Math.random() * 70 + 10 + "vw";
+            txt.style.top = Math.random() * 80 + 10 + "vh";
+            txt.style.fontSize = (Math.random() * 15 + 12) + "px";
+            successDiv.appendChild(txt);
+            setTimeout(() => txt.remove(), 3000);
+        }
+
+        function createMessageBubbles() {
+            const messages = [
+                "Mummy kehti hai apsara swarg mein hoti hai... toh aap yaha dharti pe kya kar rhi ho? 😳",
+                "Kinna sona tenu rab ne banaya ✨",
+                "Btw aap itni khoobsurat kaise ho AI generated ho kya? 😍",
+                "You are my sun I am your sunshine! ☀️",
+                "Love You 💖 Love You 💖 Love You 💖 Love You Love You 💖 Love You 💖 Love You 💖 Love You 💖"
+            ];
+
+            messages.forEach((msg) => {
+                const b = document.createElement('div');
+                b.className = 'sun-message';
+                b.innerText = msg;
+                
+                let width = 150; 
+                let posX = Math.random() * (window.innerWidth - width);
+                let posY = Math.random() * (window.innerHeight - 100);
+                let velX = (Math.random() - 0.5) * 2;
+                let velY = (Math.random() - 0.5) * 2;
+
+                successDiv.appendChild(b);
+
+                function move() {
+                    posX += velX;
+                    posY += velY;
+
+                    if (posX <= 0 || posX >= window.innerWidth - width) velX *= -1;
+                    if (posY <= 0 || posY >= window.innerHeight - 100) velY *= -1;
+
+                    b.style.left = posX + 'px';
+                    b.style.top = posY + 'px';
+                    if(isCelebrating) requestAnimationFrame(move);
                 }
+                move();
             });
-        });
+        }
+
+        successDiv.onclick = (e) => {
+            let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            
+            for (let i = 0; i < 12; i++) {
+                const b = document.createElement('div');
+                b.className = 'beam';
+                b.style.left = clientX + "px";
+                b.style.top = clientY + "px";
+                b.style.setProperty('--r', (i * 30) + "deg");
+                successDiv.appendChild(b);
+                setTimeout(() => b.remove(), 800);
+            }
+            createCrackerAt(clientX, clientY);
+        };
+
+        const celebrate = () => {
+            isCelebrating = true;
+            document.getElementById('container').style.display = 'none';
+            successDiv.style.display = 'flex';
+            document.body.style.backgroundColor = "#ffcc33";
+            
+            setInterval(updateTimer, 1000);
+            updateTimer();
+            
+            setInterval(createHeart, 400);
+            setInterval(spawnLoveText, 600); 
+            createMessageBubbles(); 
+            
+            for(let i=0; i<8; i++) setTimeout(createCracker, i * 400);
+        };
+
+        function createHeart() {
+            const h = document.createElement('div');
+            h.className = 'particle';
+            h.innerText = ["☀️", "💛", "🌻", "✨", "💖"][Math.floor(Math.random() * 5)];
+            h.style.left = Math.random() * 90 + "vw";
+            h.style.top = "100vh";
+            h.style.fontSize = (15 + Math.random() * 15) + "px";
+            h.style.animation = `heartFloat ${4 + Math.random() * 2}s linear forwards`;
+            successDiv.appendChild(h);
+            setTimeout(() => h.remove(), 6000);
+        }
+
+        function createCrackerAt(x, y) {
+            for (let i = 0; i < 12; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.width = "4px"; p.style.height = "4px";
+                p.style.background = "#fff";
+                p.style.left = x + "px"; p.style.top = y + "px";
+                const angle = (i / 12) * Math.PI * 2;
+                p.style.setProperty('--x', Math.cos(angle) * 60 + "px");
+                p.style.setProperty('--y', Math.sin(angle) * 60 + "px");
+                p.style.animation = `crackerBurst 0.8s ease-out forwards`;
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 800);
+            }
+        }
+
+        function createCracker() {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * (window.innerHeight * 0.5);
+            createCrackerAt(x, y);
+        }
     </script>
 </body>
 </html>
